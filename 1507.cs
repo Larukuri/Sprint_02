@@ -15,41 +15,43 @@ class _1507
             string casoTeste = Console.ReadLine();
             int numQueries = int.Parse(Console.ReadLine());
 
-            //laço para querie do caso teste
+            //laço para cada querie do caso teste
             for (int b = 0; b < numQueries; b++) {
 
                 string querie = Console.ReadLine();
 
-                //método para verificar se é uma substring
-                static int isSubstring(string casoTeste, string querie) {
-
-                    int tamanhoCasoTeste = casoTeste.Length;
-                    int tamanhoQuerie = querie.Length;
+                int tamanhoCasoTeste = casoTeste.Length;
+                int tamanhoQuerie = querie.Length;
 
 
-                    for (int i = 0; i <= tamanhoQuerie - tamanhoCasoTeste; i++) {
-                        int j;
+                int p = 0;
+                int n = 0;
+                for (int i = 0; i < tamanhoQuerie; i++) {
 
-                        for (j = 0; j < tamanhoCasoTeste; j++) {
 
-                            if (querie[i + j] != casoTeste[j]) { break; }
+                    for (int m = n; m < tamanhoCasoTeste; m++) {
+                        if (casoTeste[m] == querie[i]) {
+                            p++;
+                            n++;
+                            break;
                         }
-
-                        if (j == tamanhoCasoTeste) {
-                            return i;
-                        }
+                        else { n++; }
                     }
-                    return -1;
+
+
+                }
+                if (p == tamanhoQuerie) {
+                    Console.WriteLine("Yes");
+                }
+                else {
+                    Console.WriteLine("No");
                 }
 
-
-                int resposta = isSubstring(casoTeste, querie);
-
-                if (resposta == -1) { Console.WriteLine("False"); }
-                else Console.WriteLine("True");
             }
 
         }
 
     }
 }
+
+
